@@ -51,7 +51,7 @@ def cvDnnDetectFaces(image, opencv_dnn_model, min_confidence=0.75, display = Tru
       print("More than one person")
     else:
       frame = output_image[startY:endY, startX:endX]
-      cv2_imshow(frame)
+      #cv2_imshow(frame)
       eye_blink(frame)
       b = face_angle(frame)
       if b != None:
