@@ -1,3 +1,7 @@
+
+import mediapipe as mp
+import cv2
+import math
 def eye_blink(frame):
   map_face_mesh = mp.solutions.face_mesh
   RIGHT_EYE=[ 33, 7, 163, 144, 145, 153, 154, 155, 133, 173, 157, 158, 159, 160, 161 , 246 ]  
@@ -68,8 +72,8 @@ def eye_blink(frame):
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
     results  = face_mesh.process(rgb_frame)
     if results.multi_face_landmarks:
-        mesh_coords = landmarksDetection(image, results, False)
-        ratio = blinkRatio(image, mesh_coords, RIGHT_EYE, LEFT_EYE)
+        mesh_coords = landmarksDetection(frame, results, False)
+        ratio = blinkRatio(frame, mesh_coords, RIGHT_EYE, LEFT_EYE)
         #print(ratio)
         if ratio >5.2:
           print("eye-closed")
