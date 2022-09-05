@@ -12,6 +12,13 @@ git clone https://github.com/vijishmadhavan/Proppotrait
 python main.py --image "/content/1233.jpg"
 ```
 
+- Detects number of persons.
+- Detects head pose
+- Detects if eye is open or close
+- Detects if the face is blurry or not.
+
+
+
 ![demo](https://github.com/vijishmadhavan/Proppotrait/blob/master/images/Screenshot%202022-09-05%20190820.jpg)
 ![demo](https://github.com/vijishmadhavan/Proppotrait/blob/master/images/Screenshot%202022-09-05%20191553.jpg)
 ![demo](https://github.com/vijishmadhavan/Proppotrait/blob/master/images/Screenshot%202022-09-05%20191619.jpg)
