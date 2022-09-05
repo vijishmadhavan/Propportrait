@@ -1,3 +1,7 @@
+import mediapipe as mp
+import cv2
+import numpy as np
+
 def face_angle(frame):
   mp_face_mesh = mp.solutions.face_mesh
   face_mesh = mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence=0.5)
