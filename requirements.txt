@@ -1,0 +1,3 @@
+pip install image-quality
+pip install mediapipe
+pip install opencv-python
