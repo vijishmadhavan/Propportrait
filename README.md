@@ -1,8 +1,9 @@
 # Proppotrait
 
 ```shell
-install requirements
+pip install -r requirements.txt
 ```
+
 ```shell
 git clone https://github.com/vijishmadhavan/Proppotrait
 ```
