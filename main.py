@@ -1,21 +1,24 @@
-import cv2
 from google.colab.patches import cv2_imshow
 from PIL import Image
 import imutils
+import cv2
 import numpy as np
 import imquality.brisque as brisque
 import warnings
 warnings.filterwarnings("ignore")
-import math
 import argparse
-from .angle import face_angle 
-from .face import eye_blink
+import sys
+sys.path.append("/Proppotrait/")
+from angle import face_angle 
+from face import eye_blink
 
 
 ap = argparse.ArgumentParser()
-
-ap.add_argument("-i", "--image", required=True,
+ap.add_argument("--image", required=True,
 	help="path to input image")
+args = vars(ap.parse_args())
+
+
 
 caffemodel = "./checkpoint/Widerface-RetinaFace.caffemodel"
 deploy = "./checkpoint/deploy.prototxt"
