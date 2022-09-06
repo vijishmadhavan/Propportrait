@@ -64,4 +64,4 @@ def detect(image):
       print("blurry")
 
 image = cv2.imread(args["image"])
-cvDnnDetectFaces(image, opencv_dnn_model, display=True)
+detect(image)
