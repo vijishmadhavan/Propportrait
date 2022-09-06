@@ -38,9 +38,7 @@ def detect(image):
     print("more than one person")
   else:
     detection=results.detections[0]
-
     location = detection.location_data
-
     relative_bounding_box = location.relative_bounding_box
     rect_start_point = _normalized_to_pixel_coordinates(
     relative_bounding_box.xmin, relative_bounding_box.ymin, image_cols,
