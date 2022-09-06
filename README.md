@@ -9,7 +9,7 @@ git clone https://github.com/vijishmadhavan/Proppotrait
 ```
 
 ```shell
-python main.py --image "test/1233.jpg"
+python detect.py --image "test/1233.jpg"
 ```
 
 - Detects number of persons.
