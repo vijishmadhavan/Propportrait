@@ -1,14 +1,16 @@
 import cv2
 import numpy as np
 import torch
-from network.network import Network
 import warnings
 warnings.filterwarnings("ignore")
 from torchvision import transforms
 from PIL import Image
-from google.colab.patches import cv2_imshow
 import argparse
 import imquality.brisque as brisque
+import sys
+sys.path.append("/Proppotrait/")
+from network import Network
+
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--image", required=True,
