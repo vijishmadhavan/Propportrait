@@ -52,7 +52,6 @@ def headpose(frame):
     face_images = []
     for i, bbox in enumerate(faces):
       x,y, w,h = scale_bbox(bbox,1.5)
-      frame = cv2.rectangle(frame,(x,y), (x+w, y+h),color=(0,0,255),thickness=2)
       face_img = frame[y:y+h,x:x+w]
       #gray = gray_img[y:y+h,x:x+w]
       #eyes = eye_cascade.detectMultiScale(gray) 
