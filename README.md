@@ -14,7 +14,7 @@ python detect.py --image "test/1233.jpg"
 
 
 ```shell
-!python lightdetect.py --image "test/1233.jpg"
+python lightdetect.py --image "test/1233.jpg"
 ```
 
 - Detects number of persons.
