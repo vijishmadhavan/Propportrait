@@ -31,7 +31,7 @@ def scale_bbox(bbox, scale):
 
 def headpose(frame):
   face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
-  eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
+  #eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
 
   pose_estimator = Network(bin_train=False)
   load_snapshot(pose_estimator,"./checkpoint/model-b66.pkl")
@@ -54,12 +54,12 @@ def headpose(frame):
       x,y, w,h = scale_bbox(bbox,1.5)
       frame = cv2.rectangle(frame,(x,y), (x+w, y+h),color=(0,0,255),thickness=2)
       face_img = frame[y:y+h,x:x+w]
-      gray = gray_img[y:y+h,x:x+w]
-      eyes = eye_cascade.detectMultiScale(gray) 
-      if len(eyes)>0:
-        print("eye open")
-      else:
-        print("eye closed")
+      #gray = gray_img[y:y+h,x:x+w]
+      #eyes = eye_cascade.detectMultiScale(gray) 
+      #if len(eyes)>0:
+        #print("eye open")
+      #else:
+        #print("eye closed")
       if brisque.score(face_img)<26 :
         print("Not Blurry")
       else:
