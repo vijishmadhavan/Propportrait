@@ -12,6 +12,11 @@ git clone https://github.com/vijishmadhavan/Proppotrait
 python detect.py --image "test/1233.jpg"
 ```
 
+
+```shell
+!python lightdetect.py --image "test/1233.jpg"
+```
+
 - Detects number of persons.
 - Detects head pose
 - Detects if eye is open or close
