@@ -32,7 +32,7 @@ def scale_bbox(bbox, scale):
 def headpose(frame):
   face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
   pose_estimator = Network(bin_train=False)
-  load_snapshot(pose_estimator,"./models/model-b66.pkl")
+  load_snapshot(pose_estimator,"./checkpoint/model-b66.pkl")
   pose_estimator = pose_estimator.eval()
   #frame = cv2.imread(path)
   gray_img = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
