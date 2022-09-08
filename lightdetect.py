@@ -31,6 +31,8 @@ def scale_bbox(bbox, scale):
 
 def headpose(frame):
   face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
+  eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
+
   pose_estimator = Network(bin_train=False)
   load_snapshot(pose_estimator,"./checkpoint/model-b66.pkl")
   pose_estimator = pose_estimator.eval()
