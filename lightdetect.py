@@ -31,7 +31,7 @@ def scale_bbox(bbox, scale):
 
 def headpose(frame):
   face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
-  #eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
+  eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
 
   pose_estimator = Network(bin_train=False)
   load_snapshot(pose_estimator,"./checkpoint/model-b66.pkl")
@@ -49,26 +49,26 @@ def headpose(frame):
     print("more than one person")
   else:
     face_tensors = []
-    face_images = []
+    #face_images = []
     for i, bbox in enumerate(faces):
       x,y, w,h = scale_bbox(bbox,1.5)
       face_img = frame[y:y+h,x:x+w]
-      #gray = gray_img[y:y+h,x:x+w]
-      #eyes = eye_cascade.detectMultiScale(gray) 
-      #if len(eyes)>0:
-        #print("eye open")
-      #else:
-        #print("eye closed")
+      gray = gray_img[y:y+h,x:x+w]
+      eyes = eye_cascade.detectMultiScale(gray) 
+      if len(eyes)>0:
+        print("eye open")
+      else:
+        print("eye closed")
       if brisque.score(face_img)<26 :
         print("Not Blurry")
       else:
         print("blurry")
-      face_images.append(face_img)
+      #face_images.append(face_img)
       pil_img = Image.fromarray(cv2.cvtColor(cv2.resize(face_img,(224,224)), cv2.COLOR_BGR2RGB))
       face_tensors.append(transform_test(pil_img)[None])
       face_tensors = torch.cat(face_tensors,dim=0)
       roll, yaw, pitch = pose_estimator(face_tensors)
-      for img, r,y,p in zip(face_images, roll,yaw,pitch):
+      for img, r,y,p in zip(face_img, roll,yaw,pitch):
         headpose = [r,y,p]
         if headpose[2].item() > 10:
           print("looking up")
