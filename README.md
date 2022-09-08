@@ -17,6 +17,12 @@ python lightpose.py --image "test/1233.jpg"
 ```
 
 **Mediapipe**
+
+
+```shell
+pip install -r requirements2.txt
+```
+
 ```shell
 python detect.py --image "test/1233.jpg"
 ```
