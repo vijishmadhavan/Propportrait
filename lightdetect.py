@@ -23,12 +23,6 @@ def load_snapshot(model, snapshot):
     saved_state_dict = torch.load(snapshot,map_location=torch.device('cpu'))
     model.load_state_dict(saved_state_dict)
 
-def scale_bbox(bbox, scale):
-    w = max(bbox[2], bbox[3]) * scale
-    x= max(bbox[0] + bbox[2]/2 - w/2,0)
-    y= max(bbox[1] + bbox[3]/2 - w/2,0)
-    return np.asarray([x,y,w,w],np.int64)
-
 def headpose(frame):
   face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
   eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')  # eye cascade
@@ -49,9 +43,7 @@ def headpose(frame):
     print("more than one person")
   else:
     face_tensors = []
-    #face_images = []
-    for i, bbox in enumerate(faces):
-      x,y, w,h = scale_bbox(bbox,1.5)
+    for (x,y,w,h) in faces:
       face_img = frame[y:y+h,x:x+w]
       gray = gray_img[y:y+h,x:x+w]
       eyes = eye_cascade.detectMultiScale(gray) 
@@ -63,7 +55,6 @@ def headpose(frame):
         print("Not Blurry")
       else:
         print("blurry")
-      #face_images.append(face_img)
       pil_img = Image.fromarray(cv2.cvtColor(cv2.resize(face_img,(224,224)), cv2.COLOR_BGR2RGB))
       face_tensors.append(transform_test(pil_img)[None])
       face_tensors = torch.cat(face_tensors,dim=0)
